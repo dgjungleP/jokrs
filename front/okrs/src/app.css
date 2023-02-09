@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.btn {
+		@apply rounded  border-solid  p-[5px] border-2 text-base;
+	}
+	.sm-btn {
+		@apply rounded  border-solid  px-[2px] py-[1px] border-2 text-sm;
+	}
+	.modal {
+		@apply absolute left-1/2 top-1/2 w-[calc(100vw-4em)] max-w-lg  max-h-[calc(100vh-4em)] overflow-auto p-1  rounded bg-white  -translate-x-1/2 -translate-y-1/2 z-50;
+	}
+	.modal-bakend {
+		@apply fixed top-0 left-0 w-full h-full bg-black/10 z-50;
+	}
+	.time-line-point {
+		@apply inline-block rounded-[50%] border-solid border-4 border-blue-600  h-[12px] w-[12px];
+	}
+	.time-line-item {
+		@apply relative list-none pb-4;
+	}
+	.time-line-content {
+		@apply relative -mt-6 ml-5;
+	}
+	.time-line-line {
+		@apply absolute border-l-2 h-[calc(100%-8px)] ml-[5px] -mt-[6px] border-l-gray-500 border-solid;
+	}
+
+	.time-line-item:last-child .time-line-line {
+		@apply h-0;
+	}
+	.time-line {
+		@apply max-h-[20px] text-sm text-gray-400;
+		max-height: 70vh;
+		display: inline-block;
+		overflow-y: scroll;
+	}
+	.time-line::-webkit-scrollbar {
+		width: 0;
+	}
+	.card {
+		width: 10vw;
+		max-width: 10vw;
+		display: inline-block;
+		max-height: 20vh;
+		overflow: hidden;
+		box-shadow: 0px 2px 3px 1px grey;
+		@apply transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-105  duration-500 bg-white break-words;
+	}
+	.card:hover {
+		box-shadow: 0px 1px 6px 1px grey;
+	}
+	.card-content {
+		padding: 0 5px;
+	}
+	.card-title {
+	}
+
+	.btn-group {
+		@apply border-x-2 border-y-2 px-1 py-2;
+	}
+	* {
+		@apply font-sans;
+	}
+	.selected {
+		@apply bg-red-50;
+	}
+}
+* {
+	box-sizing: border-box;
+}

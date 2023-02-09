@@ -1,0 +1,10 @@
+docker build -t dgjungle/jokrs-front:v1.0.2 .
+
+docker build -t dgjungle/jokrs:v1.0.2 .
+
+docker network create -d bridge jokrs
+
+docker run -it --rm  -p 8888:8888 --volume=H:\fildb:/db --name jokrs --network jokrs -d dgjungle/jokrs:v1.0.2
+
+docker run -it --rm -p 9966:3000 --name jokrs-front --network jokrs -d dgjungle/jokrs-front:v1.0.2
+
