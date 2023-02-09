@@ -272,4 +272,24 @@ public class JsonDB {
         getSkillRelationList().add(relation);
         flush();
     }
+
+    public void insertFile(File file) {
+        long calculateId = calculateId(getFileList().stream().mapToLong(File::getId));
+        file.setId(calculateId);
+        getFileList().add(file);
+        flush();
+    }
+
+    public void updateFile(File file) {
+        getFileList().stream().filter(data -> data.getId().equals(file.getId())).findAny().ifPresent(data -> {
+            BeanUtils.copyProperties(file, data);
+        });
+    }
+
+    public List<File> queryFileList(File.FileType type) {
+        if (type == null) {
+            return getFileList();
+        }
+        return getFileList().stream().filter(data -> data.getType().equals(type)).collect(Collectors.toList());
+    }
 }

@@ -2,12 +2,12 @@ package com.jungle.okrs.controller;
 
 import com.jungle.okrs.entity.File;
 import com.jungle.okrs.service.FileService;
+import com.jungle.okrs.vo.FileTree;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -20,9 +20,14 @@ public class FileController {
 
     @PostMapping("/try/add")
     public ResponseEntity<String> tryEditDocument(@RequestBody File file) {
+        service.tryEditDocument(file);
+        return ResponseEntity.ok("Success");
+    }
 
-
-        return ResponseEntity.ok("");
+    @GetMapping("/tree")
+    public ResponseEntity<List<FileTree.Node<File>>> getFileTree(@RequestParam(value = "type", required = false) File.FileType type) {
+        FileTree tree = service.getFileTree(type);
+        return ResponseEntity.ok(tree.getRoot().getSubNode());
     }
 
 }
