@@ -27,7 +27,18 @@ public class FileController {
     @GetMapping("/tree")
     public ResponseEntity<List<FileTree.Node<File>>> getFileTree(@RequestParam(value = "type", required = false) File.FileType type) {
         FileTree tree = service.getFileTree(type);
-        return ResponseEntity.ok(tree.getRoot().getSubNode());
+        return ResponseEntity.ok(tree.getRoot().getFiles());
     }
 
+    @GetMapping("/folder")
+    public ResponseEntity<List<File>> getFolderList() {
+        FileTree tree = service.getFileTree(null);
+        return ResponseEntity.ok(tree.getAllFolder());
+    }
+
+    @GetMapping("")
+    public ResponseEntity<File> getFileTree(@RequestParam("id") Long id) {
+        File tree = service.getFile(id);
+        return ResponseEntity.ok(tree);
+    }
 }

@@ -39,4 +39,9 @@ public class FileService {
         }
         return tree;
     }
+
+    public File getFile(Long id) {
+
+        return jsonDB.getFileList().stream().filter(data -> data.getId().equals(id)).findAny().orElse(new File());
+    }
 }

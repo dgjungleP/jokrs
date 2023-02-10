@@ -49,7 +49,22 @@
 			"progress":0
 		}
 	],
-	"file":[],
+	"file":[
+		{
+			"fileType":"INSPIRATION",
+			"id":1,
+			"isFolder":true,
+			"title":"hello"
+		},
+		{
+			"fileType":"INSPIRATION",
+			"id":2,
+			"isFolder":false,
+			"parentId":1,
+			"title":"Hello2",
+			"content": ""
+		}
+	],
 	"skill":[
 		{
 			"id":1,
@@ -367,6 +382,38 @@
 			"expect":7,
 			"finished":false,
 			"id":34,
+			"relationKeyResultId":6
+		},
+		{
+			"createTime":"2023-02-10T08:20:37.278Z",
+			"current":12,
+			"expect":640,
+			"finished":false,
+			"id":35,
+			"relationKeyResultId":1
+		},
+		{
+			"createTime":"2023-02-10T08:20:37.329Z",
+			"current":10,
+			"expect":10,
+			"finished":false,
+			"id":36,
+			"relationKeyResultId":3
+		},
+		{
+			"createTime":"2023-02-10T08:20:37.335Z",
+			"current":0,
+			"expect":7,
+			"finished":false,
+			"id":37,
+			"relationKeyResultId":5
+		},
+		{
+			"createTime":"2023-02-10T08:20:37.340Z",
+			"current":0,
+			"expect":7,
+			"finished":false,
+			"id":38,
 			"relationKeyResultId":6
 		}
 	],

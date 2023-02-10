@@ -5,9 +5,9 @@
 	import 'bytemd/dist/index.css';
 	import 'github-markdown-css';
 	import './markdown.css';
-	export let content;
+
 	export let mod;
-	$: value = content;
+	export let value;
 	$: plugins = [gfm(), mermaid()];
 </script>
 

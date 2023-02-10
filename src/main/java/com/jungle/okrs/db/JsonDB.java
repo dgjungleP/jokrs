@@ -281,15 +281,15 @@ public class JsonDB {
     }
 
     public void updateFile(File file) {
-        getFileList().stream().filter(data -> data.getId().equals(file.getId())).findAny().ifPresent(data -> {
-            BeanUtils.copyProperties(file, data);
-        });
+        getFileList().stream().filter(data -> data.getId().equals(file.getId())).findAny()
+                .ifPresent(data -> BeanUtils.copyProperties(file, data));
     }
 
     public List<File> queryFileList(File.FileType type) {
         if (type == null) {
             return getFileList();
         }
-        return getFileList().stream().filter(data -> data.getType().equals(type)).collect(Collectors.toList());
+        return getFileList().stream().filter(data -> ObjectUtil.equals(data.getFileType(), type))
+                .collect(Collectors.toList());
     }
 }
