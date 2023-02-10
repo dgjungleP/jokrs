@@ -38,7 +38,14 @@ public class FileController {
 
     @GetMapping("")
     public ResponseEntity<File> getFileTree(@RequestParam("id") Long id) {
-        File tree = service.getFile(id);
-        return ResponseEntity.ok(tree);
+        File file = service.getFile(id);
+        return ResponseEntity.ok(file);
+    }
+
+
+    @GetMapping("/blog/list")
+    public ResponseEntity<List<File>> getBlogList() {
+        List<File> blogList = service.getFileList(File.FileType.BLOG);
+        return ResponseEntity.ok(blogList);
     }
 }

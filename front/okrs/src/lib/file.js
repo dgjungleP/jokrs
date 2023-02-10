@@ -14,4 +14,7 @@ async function tryEditFile(item) {
 async function getFileById(id) {
 	return axios.get(`${BASE_HOST}?id=${id}`);
 }
-export { getFileTree, tryEditFile, getFileById, getFolder };
+async function getBlogList() {
+	return axios.get(`${BASE_HOST}/blog/list`);
+}
+export { getFileTree, tryEditFile, getFileById, getFolder, getBlogList };

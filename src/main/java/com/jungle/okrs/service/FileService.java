@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.concurrent.ArrayBlockingQueue;
+import java.util.stream.Collectors;
 
 @Service
 public class FileService {
@@ -43,5 +43,10 @@ public class FileService {
     public File getFile(Long id) {
 
         return jsonDB.getFileList().stream().filter(data -> data.getId().equals(id)).findAny().orElse(new File());
+    }
+
+    public List<File> getFileList(File.FileType type) {
+        return jsonDB.getFileList().stream().filter(data -> ObjectUtil.equals(data.getFileType(), type))
+                .collect(Collectors.toList());
     }
 }

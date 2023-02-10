@@ -13,19 +13,29 @@
 	$: preCurrent = null;
 	$: newFile = {};
 	$: showAddModal = false;
+
 	onMount(() => {
+		handleFresh();
+	});
+
+	const handleFresh = () => {
 		getFileTree().then((response) => {
 			inspirationList = response.data;
 		});
 		getFolder().then((response) => {
 			folderList = response.data;
 		});
-	});
+	};
 	const handleFileSave = (item) => {
 		if (item.type) {
 			item.isFolder = item.type === 'folder';
 		}
-		tryEditFile(item);
+		tryEditFile(item).finally(() => {
+			if (item.type) {
+				handleFresh();
+				newFile = {};
+			}
+		});
 		showAddModal = false;
 	};
 	const handleSelect = (event) => {
@@ -65,10 +75,10 @@
 		</div>
 		<div>
 			{#each inspirationList as item, index (item)}
-				{#if item.isFile}
-					<File file={item.file} on:select={handleSelect} />
-				{:else}
+				{#if item.file.isFolder}
 					<Folder folder={item} on:select={handleSelect} />
+				{:else}
+					<File file={item.file} on:select={handleSelect} />
 				{/if}{/each}
 		</div>
 	</div>

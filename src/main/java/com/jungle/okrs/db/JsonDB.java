@@ -283,6 +283,7 @@ public class JsonDB {
     public void updateFile(File file) {
         getFileList().stream().filter(data -> data.getId().equals(file.getId())).findAny()
                 .ifPresent(data -> BeanUtils.copyProperties(file, data));
+        flush();
     }
 
     public List<File> queryFileList(File.FileType type) {

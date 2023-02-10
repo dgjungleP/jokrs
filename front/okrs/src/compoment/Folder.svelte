@@ -69,7 +69,7 @@
 	<ul transition:slide={{ duration: 300 }}>
 		{#each folder.files as item}
 			<li>
-				{#if item.type == 'folder'}
+				{#if item.file.isFolder}
 					<svelte:self folder={item} on:select />
 				{:else}
 					<File file={item.file} on:select />

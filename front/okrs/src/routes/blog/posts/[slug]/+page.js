@@ -1,12 +1,12 @@
-import { posts } from '$lib/data/posts';
+import { getFileById } from '$lib/file.js';
 import { error } from '@sveltejs/kit';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ params }) {
-	const post = posts.find((post) => post.slug == params.slug);
+	const post = await getFileById(params.slug);
 	if (!post) {
 		throw error(404);
 	}
 
-	return { post, posts };
+	return { post: post.data };
 }
