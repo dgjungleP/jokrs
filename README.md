@@ -13,13 +13,13 @@
 ## TODO   
 
 -[ ] 完善README    
--[ ] 找字体     
-  -[ ] Rajdhani  
-  -[ ] Heebo  
-  -[ ] Roboto  
-  -[ ] Oswald  
--[ ] 定义整体样式风格     
-  -[ ] 颜色    
-  -[ ] 排版  
+-[x] 找字体     
+  -[x] Rajdhani  
+  -[x] Heebo  
+  -[x] Roboto  
+  -[x] Oswald  
+-[x] 定义整体样式风格     
+  -[x] 颜色    
+  -[x] 排版  
 
 ## History
