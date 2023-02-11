@@ -83,7 +83,6 @@
 				category: typeList.indexOf(item.type.name)
 			});
 		}
-		debugger;
 
 		flushChart();
 	};

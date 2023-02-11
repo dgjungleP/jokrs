@@ -3,4 +3,4 @@
 	export let data;
 </script>
 
-<h1>A blog done in 5-minuties!</h1>
+<h1>Some About Blog</h1>

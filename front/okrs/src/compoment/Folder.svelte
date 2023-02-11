@@ -9,7 +9,7 @@
 	export let folder;
 	$: expanded = false;
 	$: current = {};
-	$: tags = folder.tags || [];
+	$: tags = folder.file.tags || [];
 	const toggle = () => {
 		expanded = !expanded;
 	};
@@ -20,7 +20,7 @@
 	class=" flex"
 	class:expanded
 	on:click={() => {
-		select(folder);
+		select(folder.file);
 		toggle();
 	}}
 	bind:this={current}
@@ -57,7 +57,7 @@
 		</svg>
 	{/if}
 
-	<spna>{folder.name}</spna>
+	<spna>{folder.file.title}</spna>
 	<div class="tags">
 		{#each tags as tag}
 			<div class=" tag">{tag}</div>
@@ -67,12 +67,12 @@
 
 {#if expanded}
 	<ul transition:slide={{ duration: 300 }}>
-		{#each folder.files as file}
+		{#each folder.files as item}
 			<li>
-				{#if file.type == 'folder'}
-					<svelte:self folder={file} on:select />
+				{#if item.file.isFolder}
+					<svelte:self folder={item} on:select />
 				{:else}
-					<File {file} on:select />
+					<File file={item.file} on:select />
 				{/if}
 			</li>
 		{/each}

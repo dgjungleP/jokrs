@@ -1,7 +1,6 @@
 package com.jungle.okrs.entity;
 
 import lombok.Data;
-import org.omg.CORBA.PRIVATE_MEMBER;
 
 import java.time.Instant;
 import java.util.List;
@@ -11,18 +10,19 @@ import java.util.List;
 public class File {
 
     private Long id;
+    private Long parentId;
     private Boolean isFolder;
-    private String content;
+    private String content = "";
     private String title;
     private String creator;
     private String lastUpdater;
     private Instant createTime;
     private Instant updateTime;
     private List<String> tagList;
-    private DocumentType type;
+    private FileType fileType;
     // TODO 和skill联动
 
-    public enum DocumentType {
+    public enum FileType {
         INSPIRATION, BLOG,
     }
 }

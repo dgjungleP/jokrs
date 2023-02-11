@@ -30,7 +30,7 @@
 			select(file);
 		}}
 	>
-		{file.name}
+		{file.title}
 	</span>
 
 	<div class="tags">
