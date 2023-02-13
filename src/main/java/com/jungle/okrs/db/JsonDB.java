@@ -34,7 +34,7 @@ public class JsonDB {
     private final List<File> fileList = new ArrayList<>();
     private final List<DailyTodo> dailyTodoList = new ArrayList<>();
     //    public static final String db_path = "/db/jokrs.json";
-    public static final String db_path = "C:\\Users\\jd53\\Documents\\GitHub\\Jungle_bakend_demo\\jokrs\\src\\main\\resources\\mem.json";
+    public static final String db_path = "mem.json";
 
     public static JsonDB init() {
         JsonDB jsonDB = new JsonDB();
