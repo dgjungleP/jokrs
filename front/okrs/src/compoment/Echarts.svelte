@@ -35,4 +35,9 @@
 		chartDom.resize();
 	}}
 />
-<div class="chart inline-block overflow-hidden" bind:this={chart} style:height style:width />
+<div
+	class="chart inline-block overflow-hidden p-0 m-0"
+	bind:this={chart}
+	style:height
+	style:width
+/>

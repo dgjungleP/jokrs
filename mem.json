@@ -14,7 +14,7 @@
 			"measure":123,
 			"name":"123",
 			"planTime":"2023-02-06T16:00:00Z",
-			"progress":3
+			"progress":100
 		},
 		{
 			"description":"213",
@@ -22,7 +22,7 @@
 			"measure":123,
 			"name":"3213",
 			"planTime":"2023-02-19T16:00:00Z",
-			"progress":10
+			"progress":35
 		},
 		{
 			"description":"332",
@@ -570,6 +570,58 @@
 			"finished":false,
 			"id":46,
 			"relationKeyResultId":6
+		},
+		{
+			"actual":10,
+			"createTime":"2023-02-14T01:23:16.389Z",
+			"current":20,
+			"expect":14,
+			"finishTime":"2023-02-14T01:24:22.843Z",
+			"finished":true,
+			"id":47,
+			"relationKeyResultId":3
+		},
+		{
+			"createTime":"2023-02-14T01:23:16.430Z",
+			"current":0,
+			"expect":10,
+			"finished":false,
+			"id":48,
+			"relationKeyResultId":5
+		},
+		{
+			"createTime":"2023-02-14T01:23:16.438Z",
+			"current":0,
+			"expect":10,
+			"finished":false,
+			"id":49,
+			"relationKeyResultId":6
+		},
+		{
+			"actual":15,
+			"createTime":"2023-02-17T06:19:06.034Z",
+			"current":35,
+			"expect":22,
+			"finishTime":"2023-02-17T06:20:17.103Z",
+			"finished":true,
+			"id":50,
+			"relationKeyResultId":3
+		},
+		{
+			"createTime":"2023-02-17T06:19:06.081Z",
+			"current":0,
+			"expect":13,
+			"finished":false,
+			"id":51,
+			"relationKeyResultId":5
+		},
+		{
+			"createTime":"2023-02-17T06:19:06.086Z",
+			"current":0,
+			"expect":13,
+			"finished":false,
+			"id":52,
+			"relationKeyResultId":6
 		}
 	],
 	"action_log":[
@@ -588,6 +640,14 @@
 		{
 			"actionDescription":"Apply O{123}`s KR{123} with progress{20}",
 			"time":"2023-01-31T08:57:14.437Z"
+		},
+		{
+			"actionDescription":"Apply O{123}`s KR{3213} with progress{10}",
+			"time":"2023-02-14T01:24:22.844Z"
+		},
+		{
+			"actionDescription":"Apply O{123}`s KR{3213} with progress{15}",
+			"time":"2023-02-17T06:20:17.105Z"
 		}
 	],
 	"objective":[
