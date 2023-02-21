@@ -1,5 +1,6 @@
 package com.jungle.okrs.service;
 
+import cn.hutool.core.util.ObjectUtil;
 import com.jungle.okrs.db.JsonDB;
 import com.jungle.okrs.dto.KeyResultDTO;
 import com.jungle.okrs.entity.KeyResult;
@@ -7,6 +8,7 @@ import com.jungle.okrs.entity.OKRRelation;
 import com.jungle.okrs.entity.Objective;
 import com.jungle.okrs.vo.KeyResultVO;
 import com.jungle.okrs.vo.ObjectiveVO;
+import lombok.Data;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -28,6 +30,7 @@ public class OkrService {
         List<OKRRelation> okrRelationList = jsonDB.getOkrRelationList();
         List<KeyResult> keyResultList = jsonDB.getKeyResultList();
         for (Objective objective : objectives) {
+            calculateWeight(okrRelationList, objective.getId());
             Double progress = okrRelationList.stream()
                     .filter(data -> data.getObjectiveId().equals(objective.getId()))
                     .map(data -> keyResultList.stream().filter(kr -> kr.getId().equals(data.getKeyResultId()))
@@ -39,6 +42,23 @@ public class OkrService {
             result.add(objective.withProgress(progress));
         }
         return result;
+    }
+
+    private static void calculateWeight(List<OKRRelation> okrRelationList, Long objectiveId) {
+        long emptyCount = okrRelationList.stream()
+                .filter(data -> data.getObjectiveId().equals(objectiveId))
+                .filter(data -> ObjectUtil.isNull(data.getWeight())).count();
+        if (emptyCount > 0) {
+            long sum = okrRelationList.stream()
+                    .filter(data -> data.getObjectiveId().equals(objectiveId))
+                    .filter(data -> ObjectUtil.isNotNull(data.getWeight()))
+                    .mapToLong(OKRRelation::getWeight).sum();
+            long commonWeight = (100 - sum) / emptyCount;
+            okrRelationList.stream()
+                    .filter(data -> data.getObjectiveId().equals(objectiveId))
+                    .filter(data -> ObjectUtil.isNull(data.getWeight()))
+                    .forEach(data -> data.setWeight(commonWeight));
+        }
     }
 
     private static Double calculateRate(KeyResult kr) {
@@ -85,8 +105,12 @@ public class OkrService {
     }
 
     public KeyResultVO getKeyResultById(Long id) {
+        List<OKRRelation> okrRelationList = jsonDB.getOkrRelationList();
         OKRRelation relation = jsonDB.queryRelationWithKeyResultId(id);
         KeyResult keyResult = jsonDB.queryKeyResultById(id);
+        calculateWeight(okrRelationList, relation.getObjectiveId());
+        okrRelationList.stream().filter(data -> data.getKeyResultId().equals(id)).findAny()
+                .ifPresent(data -> relation.setWeight(data.getWeight()));
         return KeyResultVO.build(keyResult, relation);
     }
 
