@@ -93,22 +93,22 @@
 		{
 			"keyResultId":1,
 			"objectiveId":1,
-			"weight":50
+			"weight":0
 		},
 		{
 			"keyResultId":2,
 			"objectiveId":1,
-			"weight":33
+			"weight":0
 		},
 		{
 			"keyResultId":3,
 			"objectiveId":1,
-			"weight":33
+			"weight":30
 		},
 		{
 			"keyResultId":4,
 			"objectiveId":1,
-			"weight":20
+			"weight":0
 		}
 	]
 }
