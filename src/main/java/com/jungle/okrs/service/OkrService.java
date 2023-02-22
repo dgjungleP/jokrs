@@ -6,6 +6,7 @@ import com.jungle.okrs.dto.KeyResultDTO;
 import com.jungle.okrs.entity.KeyResult;
 import com.jungle.okrs.entity.OKRRelation;
 import com.jungle.okrs.entity.Objective;
+import com.jungle.okrs.util.strategy.WeightRegulator;
 import com.jungle.okrs.vo.KeyResultVO;
 import com.jungle.okrs.vo.ObjectiveVO;
 import lombok.Data;
@@ -30,8 +31,9 @@ public class OkrService {
         List<OKRRelation> okrRelationList = jsonDB.getOkrRelationList();
         List<KeyResult> keyResultList = jsonDB.getKeyResultList();
         for (Objective objective : objectives) {
-            calculateWeight(okrRelationList, objective.getId());
-            Double progress = okrRelationList.stream()
+            WeightRegulator<OKRRelation> regulator = new WeightRegulator<>(okrRelationList.stream()
+                    .filter(data -> data.getObjectiveId().equals(objective.getId())).collect(Collectors.toList()));
+            Double progress = regulator.getCorrectedRelation().stream()
                     .filter(data -> data.getObjectiveId().equals(objective.getId()))
                     .map(data -> keyResultList.stream().filter(kr -> kr.getId().equals(data.getKeyResultId()))
                             .map(kr -> calculateRate(kr) * data.getWeight())
@@ -108,8 +110,9 @@ public class OkrService {
         List<OKRRelation> okrRelationList = jsonDB.getOkrRelationList();
         OKRRelation relation = jsonDB.queryRelationWithKeyResultId(id);
         KeyResult keyResult = jsonDB.queryKeyResultById(id);
-        calculateWeight(okrRelationList, relation.getObjectiveId());
-        okrRelationList.stream().filter(data -> data.getKeyResultId().equals(id)).findAny()
+        WeightRegulator<OKRRelation> regulator = new WeightRegulator<>(okrRelationList.stream()
+                .filter(data -> data.getObjectiveId().equals(relation.getObjectiveId())).collect(Collectors.toList()));
+        regulator.getCorrectedRelation().stream().filter(data -> data.getKeyResultId().equals(id)).findAny()
                 .ifPresent(data -> relation.setWeight(data.getWeight()));
         return KeyResultVO.build(keyResult, relation);
     }

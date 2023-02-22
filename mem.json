@@ -12,13 +12,20 @@
 			"measure":200,
 			"name":"学习循环",
 			"planTime":"2023-06-20T16:00:00Z",
-			"progress":100
+			"progress":0
 		},
 		{
 			"id":3,
 			"measure":200,
 			"name":"学习",
 			"planTime":"2023-07-20T16:00:00Z",
+			"progress":0
+		},
+		{
+			"id":4,
+			"measure":200,
+			"name":"TEst",
+			"planTime":"2023-02-21T16:00:00Z",
 			"progress":0
 		}
 	],
@@ -43,6 +50,30 @@
 			"finished":false,
 			"id":2,
 			"relationKeyResultId":2
+		},
+		{
+			"createTime":"2023-02-22T01:50:08.872Z",
+			"current":10,
+			"expect":0,
+			"finished":false,
+			"id":3,
+			"relationKeyResultId":1
+		},
+		{
+			"createTime":"2023-02-22T01:50:08.911Z",
+			"current":0,
+			"expect":1,
+			"finished":false,
+			"id":4,
+			"relationKeyResultId":2
+		},
+		{
+			"createTime":"2023-02-22T01:50:08.912Z",
+			"current":0,
+			"expect":1,
+			"finished":false,
+			"id":5,
+			"relationKeyResultId":3
 		}
 	],
 	"action_log":[
@@ -62,17 +93,22 @@
 		{
 			"keyResultId":1,
 			"objectiveId":1,
-			"weight":10
+			"weight":50
 		},
 		{
 			"keyResultId":2,
 			"objectiveId":1,
-			"weight":90
+			"weight":33
 		},
 		{
 			"keyResultId":3,
 			"objectiveId":1,
-			"weight":10
+			"weight":33
+		},
+		{
+			"keyResultId":4,
+			"objectiveId":1,
+			"weight":20
 		}
 	]
 }

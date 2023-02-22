@@ -1,4 +1,4 @@
-package com.jungle.jokrs;
+package com.jungle.okrs.util.strategy;
 
 public interface Relation {
 
