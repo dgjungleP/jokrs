@@ -112,9 +112,10 @@ public class OkrService {
         KeyResult keyResult = jsonDB.queryKeyResultById(id);
         WeightRegulator<OKRRelation> regulator = new WeightRegulator<>(okrRelationList.stream()
                 .filter(data -> data.getObjectiveId().equals(relation.getObjectiveId())).collect(Collectors.toList()));
+        KeyResultVO resultVo = KeyResultVO.build(keyResult, relation);
         regulator.getCorrectedRelation().stream().filter(data -> data.getKeyResultId().equals(id)).findAny()
-                .ifPresent(data -> relation.setWeight(data.getWeight()));
-        return KeyResultVO.build(keyResult, relation);
+                .ifPresent(data -> resultVo.setWeight(data.getWeight()));
+        return resultVo;
     }
 
     public void deleteKeyResult(Long id) {
