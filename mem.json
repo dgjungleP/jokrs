@@ -5,7 +5,7 @@
 			"measure":100,
 			"name":"学习基本语法",
 			"planTime":"2023-06-20T16:00:00Z",
-			"progress":10
+			"progress":1010
 		},
 		{
 			"id":2,
@@ -52,10 +52,12 @@
 			"relationKeyResultId":2
 		},
 		{
+			"actual":1000,
 			"createTime":"2023-02-22T01:50:08.872Z",
-			"current":10,
-			"expect":0,
-			"finished":false,
+			"current":1010,
+			"expect":-7,
+			"finishTime":"2023-02-22T02:49:38.480Z",
+			"finished":true,
 			"id":3,
 			"relationKeyResultId":1
 		},
@@ -80,6 +82,10 @@
 		{
 			"actionDescription":"Apply O{学习Rust}`s KR{学习基本语法} with progress{10}",
 			"time":"2023-02-21T09:29:20.486Z"
+		},
+		{
+			"actionDescription":"Apply O{学习Rust}`s KR{学习基本语法} with progress{1000}",
+			"time":"2023-02-22T02:49:38.482Z"
 		}
 	],
 	"objective":[
