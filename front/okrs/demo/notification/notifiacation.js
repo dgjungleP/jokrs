@@ -1,6 +1,5 @@
 // 判断浏览器是否支持唤醒
 if (window.Notification) {
-	debugger;
 	let popNotice = () => {
 		if (!Notification.permission === 'granted') return;
 		const notification = new Notification('核客互动', {
