@@ -1,9 +1,13 @@
 package com.jungle.okrs.vo;
 
+import com.alibaba.fastjson.JSON;
 import com.jungle.okrs.entity.Skill;
 import com.jungle.okrs.entity.SkillRelation;
 import com.jungle.okrs.entity.SkillType;
 import lombok.Data;
+import oshi.SystemInfo;
+import oshi.hardware.HardwareAbstractionLayer;
+import oshi.software.os.OperatingSystem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,4 +20,6 @@ public class SkillVo {
 
     public void tryAddRelation(Long targetId, Long sourceId) {
     }
+
+
 }
